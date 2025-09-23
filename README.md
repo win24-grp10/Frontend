@@ -1,11 +1,11 @@
 # Core Gym Club
 
-**Frontend för Core Gym Club, modern webbaplikation byggd med React + Vite + TypeScript där användaren kan boka sina träningspass och hantera sina aktiviteter. Projektet demonstrerar fullstack-utveckling med fokus på responsiv design och användarvänlig bokningsfunktionalitet.**
+**Frontend för Core Gym Club, modern webbapplikation byggd med React + Vite + TypeScript där användaren kan boka sina träningspass och hantera sina gymaktiviteter. Projektet demonstrerar fullstack-utveckling med fokus på responsiv design och användarvänlig bokningsfunktionalitet.**
 
 # Klona projektet
 
-git clone https://github.com/win24-grp10/Frontend.git
-cd Frontend
+- git clone https://github.com/win24-grp10/Frontend.git
+- cd Frontend
 
 # Installera dependencies
 
@@ -18,18 +18,24 @@ npm run dev
 ## Tech Stack
 
 React 18 - UI framework
+
 TypeScript - Type safety & modern JavaScript
+
 Vite - Build tool & dev server
+
 CSS3 - Styling med custom properties
 
 ## Directory
 
 src/
 
-> assets/
-> components/
-> pages/
-> styles/ # global styles
+assets/
+
+components/
+
+pages/
+
+styles/ # global styles
 
 # Brancher & commits
 
