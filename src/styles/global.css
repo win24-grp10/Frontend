@@ -1,0 +1,75 @@
+:root {
+    /* Typography */
+    --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-size-base: 1rem;
+
+    /* Colors */
+    --white: #ffffff;
+    --black: #000000;
+    --primary-color: #ff6b35;
+    --primary-light: #ff8c69;
+
+    /* Gray scale */
+    --gray-light: #f8f9fa;
+    --gray-medium: #dee2e6;
+    --gray-dark: #6c757d;
+
+    /* Text Colors */
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-light: #ffffff;
+
+    /* Backgrounds */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-dark: #2c3540;
+    --bg-darker: #1e2832;
+
+    /* Spacing (8px grid) */
+    --spacing-xs: 0.5rem;
+    /* 8px */
+    --spacing-sm: 1rem;
+    /* 16px */
+    --spacing-md: 1.5rem;
+    /* 24px */
+    --spacing-lg: 2rem;
+    /* 32px */
+    --spacing-xl: 3rem;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+
+}
+
+/* Container system */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Responsive container padding */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+}
