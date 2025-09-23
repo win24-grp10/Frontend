@@ -2,6 +2,12 @@
     /* Typography */
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-size-base: 1rem;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    --font-black: 900;
 
     /* Colors */
     --white: #ffffff;
@@ -18,6 +24,7 @@
     --text-primary: #212529;
     --text-secondary: #6c757d;
     --text-light: #ffffff;
+    --text-blue: #0057f8;
 
     /* Backgrounds */
     --bg-primary: #ffffff;
@@ -50,7 +57,73 @@ body {
     font-size: var(--font-size-base);
     color: var(--text-primary);
     background-color: var(--bg-primary);
+}
 
+/* Links */
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: var(--font-semibold);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: var(--font-bold);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: var(--font-semibold);
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: var(--font-semibold);
+}
+
+h6 {
+  font-size: 1.125rem;
+  font-weight: var(--font-semibold);
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 1.5rem;
+  margin-top: 0.5rem;
+  background-color: white;
+  border: none;
+  border-radius: 0.875rem;
+  font-size: 1rem;
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #d4d5d6;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.753);
+}
+
+/* Input Placeholders */
+input::placeholder, textarea::placeholder {
+  color: var(--color-text);
+  opacity: 1;
 }
 
 /* Container system */
