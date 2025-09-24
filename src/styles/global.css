@@ -1,5 +1,7 @@
+@import '../components/Footer.css';
+
 :root {
-    /* Typography */
+   /* Typography */
     --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-size-base: 1rem;
     --font-regular: 400;
