@@ -3,8 +3,10 @@ import "../styles/global.css";
 import "../styles/auth.css";
 import AuthBg from "../Images/auth-background.jpg";
 
+
 const RegisterPage = () => {
   return (
+    <>
     <main>
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
       
@@ -50,7 +52,9 @@ const RegisterPage = () => {
           </p>
         </form>
       </div>
-    </main>
+    </main>  
+   
+    </>
   )
 }
 
