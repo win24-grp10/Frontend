@@ -4,5 +4,6 @@
     padding: 1.5rem;
     background-color: var(--bg-darker);
     color: var( --white);
+    text-align: center;
 }
 
