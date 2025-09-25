@@ -1,0 +1,51 @@
+.hero {
+    background: url("../Images/background.jpg") no-repeat center/cover;
+
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 2px;
+}
+
+.hero h1 .highlight {
+    color: var(--primary-color);
+}
+
+.hero h2 {
+    margin-top: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: var(--font-medium);
+    color: var(--white);
+}
+
+.hero-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 0.5rem;
+    margin-top: 4rem;
+
+    a {
+        color: var(--primary-color);
+
+    }
+
+    a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
