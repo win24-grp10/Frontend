@@ -1,5 +1,5 @@
 /* ===== Register Page Styles ===== */
-body {
+.auth-page {
   display: flex;
   justify-content: center;
   align-items: center;
