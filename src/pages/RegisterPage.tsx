@@ -34,7 +34,7 @@ const SignupPage: React.FC = () => {
   };
 
   const register = async (data: FormData) => {
-    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/account/signup", { 
+    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/Account/signup", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",

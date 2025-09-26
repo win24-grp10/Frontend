@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
   };
 
   const login = async (data: LoginData) => {
-    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/account/login", {
+    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/Account/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
