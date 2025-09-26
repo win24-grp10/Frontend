@@ -142,7 +142,7 @@ const SignupPage: React.FC = () => {
           {success && <p style={{ color: "green" }}>{success}</p>}
 
           <p className="login-link">
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account? <Link to="/Login">Login</Link>
           </p>
         </form>
       </div>
