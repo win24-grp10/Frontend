@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthBg from "../Images/auth-background.jpg";
 
 interface FormData {
-  fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -12,7 +11,6 @@ interface FormData {
 
 const SignupPage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -23,9 +21,7 @@ const SignupPage: React.FC = () => {
   const [success, setSuccess] = useState<string>("");
   const navigate = useNavigate();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, type, value, checked } = e.target;
     setFormData((prev: FormData) => ({
       ...prev,
@@ -34,19 +30,21 @@ const SignupPage: React.FC = () => {
   };
 
   const register = async (data: FormData) => {
-    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/Account/signup", { 
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password,
-        confirmPassword: data.confirmPassword,
-        acceptTerms: data.acceptTerms,
-      }),
-    });
+    const res = await fetch(
+      "https://grp10authserviceapp.azurewebsites.net/api/Account/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          acceptTerms: data.acceptTerms,
+        }),
+      }
+    );
 
     const result = await res.json();
 

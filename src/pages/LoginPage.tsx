@@ -17,9 +17,7 @@ const LoginPage: React.FC = () => {
   const [success, setSuccess] = useState<string>("");
   const navigate = useNavigate();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -28,13 +26,16 @@ const LoginPage: React.FC = () => {
   };
 
   const login = async (data: LoginData) => {
-    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/Account/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch(
+      "https://grp10authserviceapp.azurewebsites.net/api/Account/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     const result = await res.json();
 
