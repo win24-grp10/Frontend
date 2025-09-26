@@ -64,7 +64,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <main className="auth-page">
+    <main className="auth-page login-page">
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
 
       <div className="container">
