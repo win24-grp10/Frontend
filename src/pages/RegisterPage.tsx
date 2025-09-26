@@ -34,7 +34,7 @@ const SignupPage: React.FC = () => {
   };
 
   const register = async (data: FormData) => {
-    const res = await fetch("BYTMIG", {  // byt till rätt ställe här
+    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/account/signup", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,13 +74,12 @@ const SignupPage: React.FC = () => {
       }
     }
   };
-
   return (
     <main className="auth-page">
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
 
       <div className="container">
-        <h2>Register</h2>
+        <h2>Sign Up</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

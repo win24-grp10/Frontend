@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
   };
 
   const login = async (data: LoginData) => {
-    const res = await fetch("BYTMIG", {  // byt till rätt ställe här
+    const res = await fetch("https://grp10authserviceapp.azurewebsites.net/api/account/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const LoginPage: React.FC = () => {
     try {
       await login(formData);
       setSuccess("✅ Login successful! Redirecting...");
-      setTimeout(() => navigate("/BYTMIG"), 2000); // byt till rätt ställe här
+      setTimeout(() => navigate("/landing"), 2000);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
