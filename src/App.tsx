@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import RegisterPage from "./pages/RegisterPage.jsx";
+import SignupPage from "./pages/SignupPage.js";
 import LandingPage from "./pages/LandingPage.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
 
@@ -11,8 +11,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
       </Route>
 
-      {/* register page */}
-      <Route path="/register" element={<RegisterPage />} />
+      {/* signup page */}
+      <Route path="/signup" element={<SignupPage />} />
       {/* fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
