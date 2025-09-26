@@ -2,8 +2,10 @@ import React from 'react'
 
 const WorkoutList = () => {
   return (
-    <div>WorkoutList</div>
+    <div>
+        <p>Testrad</p>
+    </div>
   )
 }
 
-export default WorkoutList
+export default WorkoutLis
