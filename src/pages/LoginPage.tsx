@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthBg from "../Images/auth-background.jpg";
+import "../styles/auth.css";
 
 interface LoginData {
   email: string;
