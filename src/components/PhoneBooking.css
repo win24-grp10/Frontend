@@ -1,0 +1,15 @@
+.phone-booking {
+
+margin: auto;
+text-align: center;
+font-size: larger;
+font-weight: bold;
+margin-top: 1rem;
+}
+
+.phone-booking a {
+    color: var(--primary-color);
+    font-weight: var(--font-bold);
+    font-size: 3rem;
+    text-decoration: none;
+}
