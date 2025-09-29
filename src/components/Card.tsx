@@ -6,7 +6,24 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ dataObj }) => {
+
+  let dateStr = "";
+  let timeStr = "";
+  if (dataObj.date) {
+    const dateObj = new Date(dataObj.date);
+    dateStr = dateObj.toLocaleDateString("en-US", {
+      weekday: "short",
+      day: "2-digit",
+      month: "short",
+    });
+    timeStr = dateObj.toLocaleTimeString("sv-SE", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+  }
   return (
+
     <div className="card">
       <div className="image-section">
         <img
@@ -17,12 +34,13 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
 
         {/* Overlay schema (vänster) */}
         <div className="schedule">
-          <div className="day">{dataObj.date}</div>
+         
           <div className="day">
-            FRI <span>17:00</span>
+           {dateStr}<span>{timeStr && ` ${timeStr}`}</span>
           </div>
-          <div className="day">
-            SAT <span>08:30</span>
+          <div className="book-btn day">
+            <a href="#"></a>
+            BOOK HERE 
           </div>
         </div>
 
@@ -36,8 +54,8 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
             <i className="fa-solid fa-location-dot"></i> Plats:<br></br>{" "}
             {dataObj.location}
           </p>
-          <p>
-            <i className="fa-solid fa-location-dot"></i>Info:<br></br>{" "}
+          <p><i className="fa-solid fa-circle-info"></i>
+           Info:<br></br>{" "}
             {dataObj.details}
           </p>
         </div>
