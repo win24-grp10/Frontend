@@ -77,7 +77,7 @@ const SignupPage: React.FC = () => {
     <main className="auth-page">
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
 
-      <div className="container">
+      <div className="container-form">
         <h2>Sign Up</h2>
 
         <form onSubmit={handleSubmit}>

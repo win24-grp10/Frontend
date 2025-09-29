@@ -8,7 +8,7 @@ export default function MainLayout() {
     <>
       <div className="layout">
         <main className="layout-content">
-          <Header/>
+          <Header />
           <Outlet />
         </main>
         <Footer />

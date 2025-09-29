@@ -1,4 +1,4 @@
-import "./Card.css"; // din css
+import "./Card.css";
 
 const HoverCard = () => {
   return (
@@ -39,9 +39,7 @@ const HoverCard = () => {
         <h2 className="title">Yoga</h2>
         <div className="participants">
           <i className="fa-solid fa-user"></i>
-          <span className="participants-text">
-            Zerdan Geyik, Emil, Ulf Gudmundsson
-          </span>
+          <span className="participants-text">Greta Thunberg</span>
         </div>
       </div>
     </div>

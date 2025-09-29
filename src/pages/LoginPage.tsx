@@ -69,7 +69,7 @@ const LoginPage: React.FC = () => {
     <main className="auth-page">
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
 
-      <div className="container">
+      <div className="container-form">
         <h2>Login</h2>
 
         <form onSubmit={handleSubmit}>

@@ -14,7 +14,6 @@ function App() {
 
       {/* signup page */}
       <Route path="/signup" element={<SignupPage />} />
-
       {/* login page */}
       <Route path="/login" element={<LoginPage />} />
 
