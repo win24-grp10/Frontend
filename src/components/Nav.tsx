@@ -1,5 +1,4 @@
-import "./Nav.css"; // din css
-import logo from "../Images/Coregym.png";
+import "./Nav.css";
 import corelogo from "../Images/Corelogo.png";
 
 const Navigation = () => {
