@@ -1,13 +1,10 @@
 import "./Nav.css"; // din css
+import "../Images/Coregym.png";
 
 const Navigation = () => {
   return (
     <nav className="navbar">
-      <img
-        className="logo"
-        src="../src/images/Coregym.png"
-        alt="Logo"
-      />
+      <img className="logo" src="../src/Images/Coregym.png" alt="Logo" />
       <ul className="nav-links">
         <li>
           <a href="#">
