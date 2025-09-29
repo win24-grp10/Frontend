@@ -1,21 +1,22 @@
 import "./Nav.css"; // din css
+import "../Images/Coregym.png";
 
 const Navigation = () => {
   return (
     <nav className="navbar">
-      <img
-        className="logo"
-        src="../src/images/Coregym.png"
-        alt="Logo"
-      />
+      <img className="logo" src="../src/Images/Coregym.png" alt="Logo" />
       <ul className="nav-links">
         <li>
           <a href="#">
             Home <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Highlights</a></li>
+            <li>
+              <a href="#">Overview</a>
+            </li>
+            <li>
+              <a href="#">Highlights</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -23,8 +24,12 @@ const Navigation = () => {
             About <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Team</a></li>
+            <li>
+              <a href="#">Our Story</a>
+            </li>
+            <li>
+              <a href="#">Team</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -32,8 +37,12 @@ const Navigation = () => {
             Pages <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
+            <li>
+              <a href="#">Page 1</a>
+            </li>
+            <li>
+              <a href="#">Page 2</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -41,8 +50,12 @@ const Navigation = () => {
             Elements <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Buttons</a></li>
-            <li><a href="#">Cards</a></li>
+            <li>
+              <a href="#">Buttons</a>
+            </li>
+            <li>
+              <a href="#">Cards</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -50,8 +63,12 @@ const Navigation = () => {
             Classes <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Yoga</a></li>
-            <li><a href="#">Strength</a></li>
+            <li>
+              <a href="#">Yoga</a>
+            </li>
+            <li>
+              <a href="#">Strength</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -59,8 +76,12 @@ const Navigation = () => {
             Schedule <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Weekly</a></li>
-            <li><a href="#">Monthly</a></li>
+            <li>
+              <a href="#">Weekly</a>
+            </li>
+            <li>
+              <a href="#">Monthly</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -68,8 +89,12 @@ const Navigation = () => {
             Trainers <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">Personal</a></li>
-            <li><a href="#">Group</a></li>
+            <li>
+              <a href="#">Personal</a>
+            </li>
+            <li>
+              <a href="#">Group</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -77,15 +102,19 @@ const Navigation = () => {
             Blog <i className="fa-solid fa-chevron-down"></i>
           </a>
           <ul className="dropdown">
-            <li><a href="#">News</a></li>
-            <li><a href="#">Tips</a></li>
+            <li>
+              <a href="#">News</a>
+            </li>
+            <li>
+              <a href="#">Tips</a>
+            </li>
           </ul>
         </li>
       </ul>
 
       <li>
         <a href="#">
-          <i className="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user" style={{ color: "black" }}></i>
         </a>
       </li>
 
