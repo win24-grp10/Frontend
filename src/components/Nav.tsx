@@ -1,7 +1,20 @@
 import "./Nav.css";
 import corelogo from "../Images/Corelogo.png";
+import { useState } from "react";
+import React from "react";
 
 const Navigation = () => {
+  const [open, setOpen] = useState(false);
+
+  React.useEffect(() => {
+  const handleClickOutside = (e: MouseEvent) => {
+    const menu = document.querySelector(".user-menu-nav");
+    if (menu && !menu.contains(e.target as Node)) setOpen(false);
+  };
+  document.addEventListener("click", handleClickOutside);
+  return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+  
   return (
     <nav className="navbar">
       <img className="logo" src={corelogo} alt="Logo" />
@@ -112,14 +125,14 @@ const Navigation = () => {
         </li>
       </ul>
 
-      <li>
-        <a href="#">
-          <i className="fa-solid fa-user" style={{ color: "black" }}></i>
-        </a>
-      </li>
+      <div className="user-menu user-menu-nav">
+        <button className="user-menu-trigger" onClick={() => setOpen(o => !o)}>
+          <i className="fa-solid fa-user" style={{ color: "black" }} />
+        </button>
 
-      <div id="dropdown" className="dropdown">
-        <a href="#">Log out</a>
+        <div className={`logout-box ${open ? "show" : ""}`} role="menu">
+          <a href="#" role="menuitem">Log out</a>
+        </div>
       </div>
     </nav>
   );

@@ -107,38 +107,59 @@ body {
 
 /* User menu */
 .user-menu {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 1.8rem;
-  color: #f97316;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.user-menu-trigger {
+  border: none;
+  background: transparent;
   cursor: pointer;
+  padding: 8px 10px;
+  font-size: 1.2rem;
 }
 
 .logout-box {
   position: absolute;
-  bottom: 40px;
+  top: 3.5rem;               
   right: 0;
-  background: #fff;
+  min-width: 200px;
+  background: #f88b31;
   border: 1px solid #eee;
-  border-radius: 6px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  padding: 8px 16px;
-  display: none;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  padding: 8px 0;
+  z-index: 1000;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-.logout-box a {
-  text-decoration: none;
-  color: #333;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.logout-box a:hover {
-  color: #f97316;
-}
-
-/* Visa när man klickar */
 .logout-box.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logout-box a,
+.logout-box button {
   display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: #28263B;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.logout-box a:hover,
+.logout-box button:hover {
+  background: #fff5ef;
+  color: #f97316;
 }
