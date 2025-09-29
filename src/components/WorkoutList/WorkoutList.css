@@ -1,32 +1,14 @@
 .container-workoutlist {
-  margin: 7rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 7rem;
+  margin-bottom: 7rem;
 }
 
 .workout-list {
   display: grid;
-
-  grid-template-columns: repeat(2, minmax(350px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  gap: 2rem;
+  justify-content: center;
 }
 
-@media (width >= 768px) {
-  .container {
-    padding: 0 var(--spacing-md);
-  }
-  .workout-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(350px, 1fr));
-    gap: 4rem;
-  }
-}
-
-@media (width >= 1440px) {
-  .container {
-    padding: 0 var(--spacing-md);
-  }
-  .workout-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(350px, 1fr));
-    gap: 4rem;
-  }
-}
