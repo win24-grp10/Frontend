@@ -1,24 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9fafb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
 .card {
   background: white;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  width: 350px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 400px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .image-section {
@@ -74,10 +59,10 @@ body {
   top: 0;
   right: 0;
   height: 100%;
-  width: 45%; /* lite bredare */
-  background: rgba(249,115,22,0.92);
-  backdrop-filter: blur(6px); /* glas-effekt */
-  color: white;
+  width: 45%;
+  background: var(--bg-primary);
+  backdrop-filter: blur(6px);
+  color: #f97316;
   transform: translateX(100%);
   display: flex;
   flex-direction: column;
@@ -85,8 +70,8 @@ body {
   padding: 20px;
   transition: transform 0.3s ease;
   font-weight: 500;
-  border-left: 3px solid rgba(255,255,255,0.3);
-  box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .info-box p {
@@ -103,7 +88,6 @@ body {
   opacity: 0.9;
 }
 
-/* Visa overlays vid hover */
 .image-section:hover .schedule {
   transform: translateX(0);
 }
