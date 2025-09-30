@@ -2,35 +2,26 @@ import "./Nav.css";
 import corelogo from "../Images/Corelogo.png";
 import { useState } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
 
   React.useEffect(() => {
-  const handleClickOutside = (e: MouseEvent) => {
-    const menu = document.querySelector(".user-menu-nav");
-    if (menu && !menu.contains(e.target as Node)) setOpen(false);
-  };
-  document.addEventListener("click", handleClickOutside);
-  return () => document.removeEventListener("click", handleClickOutside);
+    const handleClickOutside = (e: MouseEvent) => {
+      const menu = document.querySelector(".user-menu-nav");
+      if (menu && !menu.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-  
+
   return (
     <nav className="navbar">
       <img className="logo" src={corelogo} alt="Logo" />
       <ul className="nav-links">
         <li>
-          <a href="#">
-            Home <i className="fa-solid fa-chevron-down"></i>
-          </a>
-          <ul className="dropdown">
-            <li>
-              <a href="#">Overview</a>
-            </li>
-            <li>
-              <a href="#">Highlights</a>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <a href="#">
@@ -38,36 +29,10 @@ const Navigation = () => {
           </a>
           <ul className="dropdown">
             <li>
-              <a href="#">Our Story</a>
+              <Link to="/team">Gym Team</Link>
             </li>
             <li>
-              <a href="#">Team</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">
-            Pages <i className="fa-solid fa-chevron-down"></i>
-          </a>
-          <ul className="dropdown">
-            <li>
-              <a href="#">Page 1</a>
-            </li>
-            <li>
-              <a href="#">Page 2</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">
-            Elements <i className="fa-solid fa-chevron-down"></i>
-          </a>
-          <ul className="dropdown">
-            <li>
-              <a href="#">Buttons</a>
-            </li>
-            <li>
-              <a href="#">Cards</a>
+              <Link to="/team">MemberShip</Link>
             </li>
           </ul>
         </li>
@@ -80,7 +45,16 @@ const Navigation = () => {
               <a href="#">Yoga</a>
             </li>
             <li>
-              <a href="#">Strength</a>
+              <a href="#">Zumba</a>
+            </li>
+            <li>
+              <a href="#">Spinning</a>
+            </li>
+            <li>
+              <a href="#">Core</a>
+            </li>
+            <li>
+              <a href="#">Les Mills Virtual</a>
             </li>
           </ul>
         </li>
@@ -103,10 +77,10 @@ const Navigation = () => {
           </a>
           <ul className="dropdown">
             <li>
-              <a href="#">Personal</a>
+              <a href="#">Personal-Trainer</a>
             </li>
             <li>
-              <a href="#">Group</a>
+              <a href="#">Group-Instructors</a>
             </li>
           </ul>
         </li>
@@ -123,15 +97,23 @@ const Navigation = () => {
             </li>
           </ul>
         </li>
+        <li>
+          <Link to="/profile">My Profile</Link>
+        </li>
       </ul>
 
       <div className="user-menu user-menu-nav">
-        <button className="user-menu-trigger" onClick={() => setOpen(o => !o)}>
+        <button
+          className="user-menu-trigger"
+          onClick={() => setOpen((o) => !o)}
+        >
           <i className="fa-solid fa-user" style={{ color: "black" }} />
         </button>
 
         <div className={`logout-box ${open ? "show" : ""}`} role="menu">
-          <a href="#" role="menuitem">Log out</a>
+          <a href="#" role="menuitem">
+            Log out
+          </a>
         </div>
       </div>
     </nav>
