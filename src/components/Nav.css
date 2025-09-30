@@ -15,9 +15,16 @@ body {
   align-items: center;
   padding: 24px 32px;
   background: #ffffff;
-  color: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.6) 12%,
+    rgba(255, 255, 255, 0.83) 57%
+  );
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   gap: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -48,10 +55,6 @@ body {
   gap: 6px;
 }
 
-.nav-links a:hover {
-  color: #fffbe7;
-}
-
 .nav-links i {
   font-size: 0.7rem;
   opacity: 0.7;
@@ -63,7 +66,7 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #f88b31; /* ljusare, fräschare bakgrund */
+  background: #f88b31;
   min-width: 200px;
   padding: 8px 0;
   opacity: 0;
@@ -77,11 +80,11 @@ body {
 }
 
 .dropdown li {
-  border-bottom: 1px solid #f1f1f1; /* divider mellan items */
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .dropdown li:last-child {
-  border-bottom: none; /* ta bort sista linjen */
+  border-bottom: none;
 }
 
 .dropdown li a {
@@ -95,7 +98,7 @@ body {
 .dropdown li a:hover {
   background: #fff5ef;
   color: #f97316;
-  padding-left: 22px; /* liten swipe-effekt */
+  padding-left: 22px;
 }
 
 /* Visa dropdown vid hover */
@@ -122,13 +125,13 @@ body {
 
 .logout-box {
   position: absolute;
-  top: 3.5rem;               
+  top: 3.5rem;
   right: 0;
   min-width: 200px;
   background: #f88b31;
   border: 1px solid #eee;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   padding: 8px 0;
   z-index: 1000;
 
@@ -152,7 +155,7 @@ body {
   padding: 10px 16px;
   border: none;
   background: transparent;
-  color: #28263B;
+  color: #28263b;
   transition: all 0.3s ease;
   font-weight: 600;
   cursor: pointer;
