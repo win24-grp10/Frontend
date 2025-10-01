@@ -19,7 +19,10 @@ const Navigation = () => {
 
   const checkAuth = React.useCallback(async () => {
     try {
-      const res = await fetch("https://grp10workoutserviceapp.azurewebsites.net/api/Account/me", { credentials: "include" });
+      const res = await fetch(
+        "https://grp10authserviceapp.azurewebsites.net/api/Account/me",
+        { credentials: "include" }
+      );
       if (res.ok) {
         const data = await res.json();
         setUserEmail(data.email);
@@ -31,18 +34,19 @@ const Navigation = () => {
     }
   }, []);
 
-  
   React.useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
-  
   const logout = async () => {
     try {
-      await fetch("https://grp10workoutserviceapp.azurewebsites.net/api/Account/logout", {
-        method: "POST",
-        credentials: "include",
-      });
+      await fetch(
+        "https://grp10authserviceapp.azurewebsites.net/api/Account/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
     } finally {
       await checkAuth();
       setOpen(false);
@@ -136,7 +140,10 @@ const Navigation = () => {
       </ul>
 
       <div className="user-menu user-menu-nav">
-        <button className="user-menu-trigger" onClick={() => setOpen((o) => !o)}>
+        <button
+          className="user-menu-trigger"
+          onClick={() => setOpen((o) => !o)}
+        >
           <i className="fa-solid fa-user" style={{ color: "black" }} />
         </button>
 
@@ -144,10 +151,14 @@ const Navigation = () => {
           {userEmail ? (
             <>
               <div className="user-info-text">{userEmail}</div>
-              <button onClick={logout} className="logout-link">Logout</button>
+              <button onClick={logout} className="logout-link">
+                Logout
+              </button>
             </>
           ) : (
-            <a href="/login" className="logout-link">Login</a>
+            <a href="/login" className="logout-link">
+              Login
+            </a>
           )}
         </div>
       </div>
