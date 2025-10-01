@@ -156,9 +156,9 @@ const Navigation = () => {
               </button>
             </>
           ) : (
-            <a href="/login" className="logout-link">
+            <Link to="/login" className="logout-link">
               Login
-            </a>
+            </Link>
           )}
         </div>
       </div>
