@@ -166,3 +166,11 @@ body {
   background: #fff5ef;
   color: #f97316;
 }
+
+.user-info-text {
+  padding: 12px 18px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}

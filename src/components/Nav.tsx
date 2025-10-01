@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
+  const [userEmail, setUserEmail] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -15,6 +16,42 @@ const Navigation = () => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+  const checkAuth = React.useCallback(async () => {
+    try {
+      const res = await fetch(
+        "https://grp10authserviceapp.azurewebsites.net/api/Account/me",
+        { credentials: "include" }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setUserEmail(data.email);
+      } else {
+        setUserEmail(null);
+      }
+    } catch {
+      setUserEmail(null);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  const logout = async () => {
+    try {
+      await fetch(
+        "https://grp10authserviceapp.azurewebsites.net/api/Account/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+    } finally {
+      await checkAuth();
+      setOpen(false);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -111,9 +148,18 @@ const Navigation = () => {
         </button>
 
         <div className={`logout-box ${open ? "show" : ""}`} role="menu">
-          <a href="#" role="menuitem">
-            Log out
-          </a>
+          {userEmail ? (
+            <>
+              <div className="user-info-text">{userEmail}</div>
+              <button onClick={logout} className="logout-link">
+                Logout
+              </button>
+            </>
+          ) : (
+            <a href="/login" className="logout-link">
+              Login
+            </a>
+          )}
         </div>
       </div>
     </nav>
