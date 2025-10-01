@@ -1,5 +1,6 @@
 import "./Card.css";
 import type { Workout } from "../components/WorkoutList/WorkoutList";
+import BookButton from "./BookButton";
 
 interface CardProps {
   dataObj: Workout;
@@ -22,6 +23,8 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
       hour12: false,
     });
   }
+  const userid = "user123"
+  
   return (
 
     <div className="card">
@@ -39,8 +42,7 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
            {dateStr}<span>{timeStr && ` ${timeStr}`}</span>
           </div>
           <div className="book-btn day">
-            <a href="#"></a>
-            BOOK HERE 
+            <BookButton workoutId={dataObj.id.toString()} userId={userid}/>
           </div>
         </div>
 
