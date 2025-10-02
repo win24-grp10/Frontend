@@ -1,12 +1,16 @@
-import React from "react";
 import "../components/BookButton.css";
 
 interface ButtonProps {
   workoutId: string;
   userId: string;
+  onRefresh?: () => void;
 }
 
-const BookButton: React.FC<ButtonProps> = ({ workoutId, userId }) => {
+const BookButton: React.FC<ButtonProps> = ({
+  workoutId,
+  userId,
+  onRefresh,
+}) => {
   const handleBooking = async () => {
     try {
       const res = await fetch(
@@ -24,8 +28,7 @@ const BookButton: React.FC<ButtonProps> = ({ workoutId, userId }) => {
 
       if (res.ok) {
         //Add Confimation//
-        console.log("Booking created");
-        console.log(res);
+        onRefresh && onRefresh();
       } else {
         const error = await res.text();
         alert(`Something went wrong: ${error}`);

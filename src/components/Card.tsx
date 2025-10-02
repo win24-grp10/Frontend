@@ -4,9 +4,10 @@ import BookButton from "./BookButton";
 
 interface CardProps {
   dataObj: Workout;
+  onRefresh?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ dataObj }) => {
+const Card: React.FC<CardProps> = ({ dataObj, onRefresh }) => {
   let dateStr = "";
   let timeStr = "";
   if (dataObj.date) {
@@ -40,7 +41,11 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
             <span>{timeStr && ` ${timeStr}`}</span>
           </div>
           <div className="book-button-box">
-            <BookButton workoutId={dataObj.id.toString()} userId={userid} />
+            <BookButton
+              workoutId={dataObj.id.toString()}
+              userId={userid}
+              onRefresh={onRefresh}
+            />
           </div>
         </div>
 

@@ -36,7 +36,7 @@ const WorkoutList: React.FC = () => {
       <div className="container-workoutlist">
         <div className="workout-list">
           {data.map((dataObj) => (
-            <Card key={dataObj.id} dataObj={dataObj} />
+            <Card key={dataObj.id} dataObj={dataObj} onRefresh={fetchData} />
           ))}
         </div>
       </div>
