@@ -10,7 +10,7 @@ export interface Workout {
   location: string;
   instructor: string;
   details: string;
-  capacity: string;
+  capacity: number;
 }
 
 const WorkoutList: React.FC = () => {
