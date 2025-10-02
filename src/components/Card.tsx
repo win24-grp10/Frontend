@@ -7,7 +7,6 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ dataObj }) => {
-
   let dateStr = "";
   let timeStr = "";
   if (dataObj.date) {
@@ -23,10 +22,9 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
       hour12: false,
     });
   }
-  const userid = "user123"
-  
-  return (
+  const userid = "user123";
 
+  return (
     <div className="card">
       <div className="image-section">
         <img
@@ -37,12 +35,12 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
 
         {/* Overlay schema (vänster) */}
         <div className="schedule">
-         
           <div className="day">
-           {dateStr}<span>{timeStr && ` ${timeStr}`}</span>
+            {dateStr}
+            <span>{timeStr && ` ${timeStr}`}</span>
           </div>
-          <div className="book-btn day">
-            <BookButton workoutId={dataObj.id.toString()} userId={userid}/>
+          <div className="book-button-box">
+            <BookButton workoutId={dataObj.id.toString()} userId={userid} />
           </div>
         </div>
 
@@ -56,9 +54,9 @@ const Card: React.FC<CardProps> = ({ dataObj }) => {
             <i className="fa-solid fa-location-dot"></i> Plats:<br></br>{" "}
             {dataObj.location}
           </p>
-          <p><i className="fa-solid fa-circle-info"></i>
-           Info:<br></br>{" "}
-            {dataObj.details}
+          <p>
+            <i className="fa-solid fa-circle-info"></i>
+            Info:<br></br> {dataObj.details}
           </p>
         </div>
       </div>
