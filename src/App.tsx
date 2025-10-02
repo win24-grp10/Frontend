@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage.js";
 import LandingPage from "./pages/LandingPage.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
 import { Team } from "./pages/Team.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
 
       {/* login page */}
       <Route path="/login" element={<LoginPage />} />
+
+       <Route path="/profile" element={<ProfilePage />} />
 
       {/* fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
