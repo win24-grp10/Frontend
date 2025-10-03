@@ -3,10 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthBg from "../Images/auth-background.jpg";
 import "../styles/auth.css";
 
+
 interface LoginData {
   email: string;
   password: string;
 }
+
 
 const LoginPage: React.FC = () => {
   const [formData, setFormData] = useState<LoginData>({
@@ -14,9 +16,11 @@ const LoginPage: React.FC = () => {
     password: "",
   });
 
+
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const navigate = useNavigate();
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -25,6 +29,7 @@ const LoginPage: React.FC = () => {
       [name]: value,
     }));
   };
+
 
   const login = async (data: LoginData) => {
     const res = await fetch(
@@ -39,24 +44,36 @@ const LoginPage: React.FC = () => {
       }
     );
 
+
     const result = await res.json();
+
 
     if (!res.ok) {
       throw new Error(result.error || "Login failed");
     }
 
+
     return result;
   };
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
+
     try {
-      await login(formData);
+      const result = await login(formData);
+
+
+      // ✅ Spara userId och token i localStorage
+      localStorage.setItem("userId", result.user.id);
+      localStorage.setItem("token", result.token);
+
+
       setSuccess("✅ Login successful! Redirecting...");
-      setTimeout(() => navigate("/LandingPage"), 2000);
+      setTimeout(() => navigate("/profile"), 2000);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -66,12 +83,15 @@ const LoginPage: React.FC = () => {
     }
   };
 
+
   return (
     <main className="auth-page">
       <img className="auth-bg-image" src={AuthBg} alt="Background" />
 
+
       <div className="container-form">
         <h2>Login</h2>
+
 
         <form onSubmit={handleSubmit}>
           <div className="reg-form-input-box">
@@ -88,6 +108,7 @@ const LoginPage: React.FC = () => {
               />
             </div>
 
+
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -102,12 +123,15 @@ const LoginPage: React.FC = () => {
             </div>
           </div>
 
+
           <button type="submit" className="btn btn-login-register">
             Login
           </button>
 
+
           {error && <p style={{ color: "red" }}>{error}</p>}
           {success && <p style={{ color: "green" }}>{success}</p>}
+
 
           <p className="login-link">
             Don’t have an account? <Link to="/signup">Register</Link>
@@ -117,5 +141,6 @@ const LoginPage: React.FC = () => {
     </main>
   );
 };
+
 
 export default LoginPage;
