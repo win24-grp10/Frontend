@@ -14,6 +14,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         {/* Team page */}
         <Route path="/team" element={<Team />} />
+
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
       {/* signup page */}
@@ -21,8 +23,6 @@ function App() {
 
       {/* login page */}
       <Route path="/login" element={<LoginPage />} />
-
-       <Route path="/profile" element={<ProfilePage />} />
 
       {/* fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

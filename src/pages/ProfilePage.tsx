@@ -127,6 +127,7 @@ const ProfilePage: React.FC = () => {
     }
   };
 
+  if (message) return <p>{message}</p>;
   if (loading) return <p>Loading profile...</p>;
   if (!profile) return <p>Initializing profile...</p>;
 
