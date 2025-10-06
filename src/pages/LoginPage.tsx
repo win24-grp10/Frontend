@@ -46,6 +46,7 @@ const LoginPage: React.FC = () => {
     }
 
     return result;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,7 +60,7 @@ const LoginPage: React.FC = () => {
       if (result.userId) {
         localStorage.setItem("token", result.token);
       } else {
-        console.error("⚠️ Login response saknar userId:", result);
+        console.error("⚠️ Login response saknar token eller userId:", result);
         throw new Error("Invalid login response");
       }
 
