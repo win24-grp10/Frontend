@@ -34,13 +34,12 @@ const LoginPage: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify(data),
       }
     );
 
     const result = await res.json();
-    console.log("🔑 Login response:", result); // 👈 kolla svaret i console
+    console.log("🔑 Login response:", result);
 
     if (!res.ok) {
       throw new Error(result.error || "Login failed");
@@ -49,29 +48,33 @@ const LoginPage: React.FC = () => {
     return result;
   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setError("");
-  setSuccess("");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
 
-  try {
-    const result = await login(formData);
+    try {
+      const result = await login(formData);
 
-    // ✅ Spara userId i localStorage
-    localStorage.setItem("userId", result.id); // använder result.id direkt
-
-    setSuccess("✅ Login successful! Redirecting...");
     
-    // ✅ Navigera till startsidan istället för profile
-    setTimeout(() => navigate("/"), 1000);
-  } catch (err) {
-    if (err instanceof Error) {
-      setError(err.message);
-    } else {
-      setError("An unknown error occurred.");
+      if (result.token && result.userId) {
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("userId", result.userId);
+      } else {
+        console.error("⚠️ Login response saknar token eller userId:", result);
+        throw new Error("Invalid login response");
+      }
+
+      setSuccess("✅ Login successful! Redirecting...");
+      setTimeout(() => navigate("/landing"), 1000);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred.");
+      }
     }
-  }
-};
+  };
 
   return (
     <main className="auth-page">
@@ -118,6 +121,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
           <p className="login-link">
             Don’t have an account? <Link to="/signup">Register</Link>
+          </p>
+
+          <p className="back-home-link">
+             <Link to="/">⬅ Back to Home</Link>
           </p>
         </form>
       </div>

@@ -77,3 +77,20 @@
   font-size: 0.9rem;
   color: var(--color-body-dark);
 }
+
+.back-home-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.back-home-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.back-home-link a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
