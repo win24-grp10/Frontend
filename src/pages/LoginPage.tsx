@@ -57,9 +57,8 @@ const LoginPage: React.FC = () => {
       const result = await login(formData);
 
     
-      if (result.token && result.userId) {
+      if (result.userId) {
         localStorage.setItem("token", result.token);
-        localStorage.setItem("userId", result.userId);
       } else {
         console.error("⚠️ Login response saknar token eller userId:", result);
         throw new Error("Invalid login response");
