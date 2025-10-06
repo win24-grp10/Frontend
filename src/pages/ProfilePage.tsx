@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 interface Address {
   street: string;
   city: string;
   postalCode: string;
   country: string;
 }
-
 
 interface UserProfile {
   id: string;
@@ -19,19 +17,15 @@ interface UserProfile {
   address?: Address;
 }
 
-
 const ProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<string>("");
-
+  const [isNewProfile, setIsNewProfile] = useState(false);
 
   const navigate = useNavigate();
-
-
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
-
 
   useEffect(() => {
     if (!userId || !token) {
@@ -39,21 +33,44 @@ const ProfilePage: React.FC = () => {
       return;
     }
 
-
     const fetchProfile = async () => {
       try {
         const res = await fetch(
           `https://grp10userservice.azurewebsites.net/api/user/${userId}`,
           {
             headers: {
-              "Authorization": `Bearer ${token}`,
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
             },
           }
         );
-        if (!res.ok) throw new Error("Failed to fetch profile");
-        const data: UserProfile = await res.json();
-        setProfile(data);
+
+        if (res.status === 404) {
+          // Ingen profil finns → skapa tom profil
+          setProfile({
+            id: userId!,
+            email: "",
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            address: {
+              street: "",
+              city: "",
+              postalCode: "",
+              country: "",
+            },
+          });
+          setIsNewProfile(true);
+        } else if (!res.ok) {
+          throw new Error("Failed to fetch profile");
+        } else {
+          const data: UserProfile = await res.json();
+          if (!data.address) {
+            data.address = { street: "", city: "", postalCode: "", country: "" };
+          }
+          setProfile(data);
+          setIsNewProfile(false);
+        }
       } catch (err) {
         console.error(err);
         setMessage("❌ Failed to load profile.");
@@ -62,15 +79,12 @@ const ProfilePage: React.FC = () => {
       }
     };
 
-
     fetchProfile();
   }, [userId, token, navigate]);
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!profile) return;
     const { name, value } = e.target;
-
 
     if (["street", "city", "postalCode", "country"].includes(name)) {
       setProfile({
@@ -82,11 +96,9 @@ const ProfilePage: React.FC = () => {
     }
   };
 
-
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!profile || !token) return;
-
 
     try {
       const res = await fetch(
@@ -101,78 +113,104 @@ const ProfilePage: React.FC = () => {
         }
       );
 
-
       if (!res.ok) throw new Error("Failed to save profile");
 
-
-      setMessage("✅ Profile updated successfully!");
+      setMessage(
+        isNewProfile
+          ? "✅ Profile created successfully!"
+          : "✅ Profile updated successfully!"
+      );
+      setIsNewProfile(false);
     } catch (err) {
-      setMessage("❌ Failed to update profile.");
+      console.error(err);
+      setMessage("❌ Failed to save profile.");
     }
   };
 
-
+  if (message) return <p>{message}</p>;
   if (loading) return <p>Loading profile...</p>;
-  if (!profile) return <p>No profile found.</p>;
-
+  if (!profile) return <p>Initializing profile...</p>;
 
   return (
     <main className="auth-page">
       <div className="container">
-        <h2>My Profile</h2>
+        <h2>{isNewProfile ? "Create Your Profile" : "My Profile"}</h2>
         <form onSubmit={handleSave}>
           <div className="form-group">
             <label>Email</label>
             <input type="email" value={profile.email} disabled />
           </div>
 
-
           <div className="form-group">
             <label>First Name</label>
-            <input name="firstName" value={profile.firstName || ""} onChange={handleChange} />
+            <input
+              name="firstName"
+              value={profile.firstName || ""}
+              onChange={handleChange}
+            />
           </div>
-
 
           <div className="form-group">
             <label>Last Name</label>
-            <input name="lastName" value={profile.lastName || ""} onChange={handleChange} />
+            <input
+              name="lastName"
+              value={profile.lastName || ""}
+              onChange={handleChange}
+            />
           </div>
-
 
           <div className="form-group">
             <label>Phone Number</label>
-            <input name="phoneNumber" value={profile.phoneNumber || ""} onChange={handleChange} />
+            <input
+              name="phoneNumber"
+              value={profile.phoneNumber || ""}
+              onChange={handleChange}
+            />
           </div>
-
 
           <h3>Address</h3>
           <div className="form-group">
             <label>Street</label>
-            <input name="street" value={profile.address?.street || ""} onChange={handleChange} />
+            <input
+              name="street"
+              value={profile.address?.street || ""}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-group">
             <label>City</label>
-            <input name="city" value={profile.address?.city || ""} onChange={handleChange} />
+            <input
+              name="city"
+              value={profile.address?.city || ""}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-group">
             <label>Postal Code</label>
-            <input name="postalCode" value={profile.address?.postalCode || ""} onChange={handleChange} />
+            <input
+              name="postalCode"
+              value={profile.address?.postalCode || ""}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-group">
             <label>Country</label>
-            <input name="country" value={profile.address?.country || ""} onChange={handleChange} />
+            <input
+              name="country"
+              value={profile.address?.country || ""}
+              onChange={handleChange}
+            />
           </div>
 
-
-          <button type="submit" className="btn btn-login-register">Save Profile</button>
+          <button type="submit" className="btn btn-login-register">
+            {isNewProfile ? "Create Profile" : "Save Profile"}
+          </button>
         </form>
-
 
         {message && <p>{message}</p>}
       </div>
     </main>
   );
 };
-
 
 export default ProfilePage;

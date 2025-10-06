@@ -145,6 +145,9 @@ const SignupPage: React.FC = () => {
           <p className="login-link">
             Already have an account? <Link to="/Login">Login</Link>
           </p>
+          <p className="back-home-link">
+           <Link to="/">⬅ Back to Home</Link>
+          </p>
         </form>
       </div>
     </main>
