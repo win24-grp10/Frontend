@@ -35,17 +35,32 @@ const LoginPage: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+        credentials: "include",
       }
     );
 
-    const result = await res.json();
-    console.log("🔑 Login response:", result);
-
     if (!res.ok) {
-      throw new Error(result.error || "Login failed");
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Login failed");
     }
 
-    return result;
+    return res.json();
+  };
+
+  const fetchUser = async () => {
+    const res = await fetch(
+      "https://grp10authserviceapp.azurewebsites.net/api/Account/me",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch user info");
+    }
+
+    return res.json();
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,17 +69,18 @@ const LoginPage: React.FC = () => {
     setSuccess("");
 
     try {
-      const result = await login(formData);
+      await login(formData); 
 
-    
-      if (result.userId) {
-        localStorage.setItem("token", result.token);
-      } else {
-        console.error("⚠️ Login response saknar token eller userId:", result);
-        throw new Error("Invalid login response");
+      const user = await fetchUser();
+      console.log("👤 Current user:", user);
+
+      if (user && user.id) {
+        localStorage.setItem("userId", user.id);
       }
 
-      setSuccess("✅ Login successful! Redirecting...");
+      console.log(localStorage.getItem("userId"));
+
+      setSuccess("Login successful! Redirecting...");
       setTimeout(() => navigate("/landing"), 1000);
     } catch (err) {
       if (err instanceof Error) {
@@ -123,7 +139,7 @@ const LoginPage: React.FC = () => {
           </p>
 
           <p className="back-home-link">
-             <Link to="/">⬅ Back to Home</Link>
+            <Link to="/">⬅ Back to Home</Link>
           </p>
         </form>
       </div>

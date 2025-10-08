@@ -64,7 +64,7 @@ const SignupPage: React.FC = () => {
 
     try {
       await register(formData);
-      setSuccess("✅ Account created! Redirecting to login...");
+      setSuccess("Account created! Redirecting to login...");
       setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
       if (err instanceof Error) {
