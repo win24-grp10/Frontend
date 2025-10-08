@@ -26,7 +26,6 @@ const LoginPage: React.FC = () => {
     }));
   };
 
-  // 🔑 Login request
   const login = async (data: LoginData) => {
     const res = await fetch(
       "https://grp10authserviceapp.azurewebsites.net/api/Account/login",
@@ -36,7 +35,7 @@ const LoginPage: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-        credentials: "include", // skickar cookies
+        credentials: "include",
       }
     );
 
@@ -48,13 +47,12 @@ const LoginPage: React.FC = () => {
     return res.json();
   };
 
-  // 👤 Hämta inloggad användare
   const fetchUser = async () => {
     const res = await fetch(
       "https://grp10authserviceapp.azurewebsites.net/api/Account/me",
       {
         method: "GET",
-        credentials: "include", // skickar cookies
+        credentials: "include",
       }
     );
 
@@ -82,7 +80,7 @@ const LoginPage: React.FC = () => {
 
       console.log(localStorage.getItem("userId"));
 
-      setSuccess("✅ Login successful! Redirecting...");
+      setSuccess("Login successful! Redirecting...");
       setTimeout(() => navigate("/landing"), 1000);
     } catch (err) {
       if (err instanceof Error) {
